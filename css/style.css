@@ -25,6 +25,8 @@
    */
 --sun-size: 100px;
 --car-w: 200px; 
+--bus-w:260px;
+--truck-w:260px;
 
 }
 
@@ -270,7 +272,7 @@
    Undersøg selv: hvorfor er det smartere end at skrive de samme
    egenskaber igen i en ny regel?
 */
-
+ 
 
 /* ---------------------------------------------------------
    E4. Størrelse
@@ -284,6 +286,14 @@
    Hint: den fælles regel har max-width: 28vw. Hvorfor er det vigtigt,
    at køretøjerne aldrig er bredere end 30vw? (Kig på regnestykket ved car1.)
 */
+.bus,
+ .truck {
+   position: absolute;
+   width: var(--bus-w);
+   max-width: 28vw;
+   z-index: 1;
+   cursor: pointer;/* viser en hånd, så man kan se, at bilerne kan klikkes */
+}
 
 
 /* ---------------------------------------------------------
@@ -307,7 +317,18 @@
    bruge rotateY(180deg) her.
    Undersøg selv: hvad sker der, hvis du alligevel tilføjer den?
 */
+.bus {
+   bottom: 2.8vh;
+   left: -30vw; 
+   animation: bus 20s linear infinite;
+   width: var(--bus-w);
+}
 
+@keyframes bus {
+   0%   { transform: translateX(0) }
+   100% { transform: translateX(-130vw) }
+
+}
 
 
 /* ---------------------------------------------------------
@@ -327,8 +348,17 @@
    OBS: truck'en vender også rigtigt i billedfilen, så du skal IKKE
    bruge rotateY(180deg) her.
 */
+.truck {
+   bottom: -3.4vh;
+   left: -30vw; /* starter 30vw uden for skærmen til venstre */
+   animation: truck 14s linear infinite;
+   width: var(--bus-w)
+}
+@keyframes truck {
+   0%   { transform: translateX(0);}
+   100% { transform: translateX(-130vw);}
 
-
+}
 
 /* ---------------------------------------------------------
    Ekstra-ekstra (valgfrit)
